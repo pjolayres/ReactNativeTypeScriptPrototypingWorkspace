@@ -61,7 +61,7 @@ export default class App extends Component<Props, State> {
         <Text style={styles.instructions}>{App.staticProp}</Text>
         <Text style={styles.instructions}>List: {listString}</Text>
         <Text style={styles.instructions}>Object: {objectStrig}</Text>
-        <StyledText text="Styled text" number={1} />
+        <StyledText text="Styled text" />
       </View>
     );
   }
