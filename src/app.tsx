@@ -11,6 +11,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import StyledText from './components/styled-text';
+import UnderlinedText from './components/underlined-text';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -28,6 +29,8 @@ interface State {
 
 export default class App extends Component<Props, State> {
   static staticProp = 'Static Prop';
+
+  private underlinedText = React.createRef<UnderlinedText>();
 
   constructor(props: Props) {
     super(props);
@@ -47,6 +50,14 @@ export default class App extends Component<Props, State> {
     };
   }
 
+  componentDidMount() {
+    setTimeout(() => {
+      if (this.underlinedText.current) {
+        this.underlinedText.current.changeText('Underlined text (Changed)');
+      }
+    }, 2000);
+  }
+
   render() {
     const { list, object } = this.state;
     const listString = list.join(', ');
@@ -62,6 +73,7 @@ export default class App extends Component<Props, State> {
         <Text style={styles.instructions}>List: {listString}</Text>
         <Text style={styles.instructions}>Object: {objectStrig}</Text>
         <StyledText text="Styled text" />
+        <UnderlinedText ref={this.underlinedText} text="Underlined text (Changing in 2s)" />
       </View>
     );
   }
