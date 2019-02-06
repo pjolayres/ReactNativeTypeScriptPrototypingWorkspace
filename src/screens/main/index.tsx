@@ -64,10 +64,6 @@ export class Main extends Component<Props, State> {
     this.props.setVersion('1.0.1');
   }
 
-  saveState = () => {
-    persistor.flush();
-  }
-
   resetState = () => {
     persistor.purge();
   }
@@ -95,7 +91,6 @@ export class Main extends Component<Props, State> {
         <TouchableOpacity onPress={this.onChangeName}><Text>Change Name</Text></TouchableOpacity>
         <TouchableOpacity onPress={this.onChangeVersion}><Text>Change Version</Text></TouchableOpacity>
         <Text style={styles.instructions}>------</Text>
-        <TouchableOpacity onPress={this.saveState}><Text>Save State</Text></TouchableOpacity>
         <TouchableOpacity onPress={this.resetState}><Text>Reset State</Text></TouchableOpacity>
       </View>
     );
