@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
+import React, { Component, Dispatch } from 'react';
+import { Platform, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 
 import StyledText from '../../components/styled-text';
 import UnderlinedText from '../../components/underlined-text';
-import { ReduxState } from '../../state/types';
+import { ReduxState, ActionTypes } from '../../state/types';
+import { setName } from '../../state/user-data/actions';
+import { setVersion } from '../../state/app-data/actions';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android: 'Double tap R on your keyboard to reload,\n' + 'Shake or press menu button for dev menu'
 });
 
-interface Props extends StateProps {}
+interface Props extends StateProps, ActionProps {}
 
 interface State {
   list: string[];
@@ -53,6 +55,14 @@ export class Main extends Component<Props, State> {
     }, 1000);
   }
 
+  onChangeName = () => {
+    this.props.setName('New Name');
+  }
+
+  onChangeVersion = () => {
+    this.props.setVersion('1.0.1');
+  }
+
   render() {
     const { version, name } = this.props;
     const { list, object } = this.state;
@@ -73,6 +83,8 @@ export class Main extends Component<Props, State> {
         <Text style={styles.instructions}>------</Text>
         <Text style={styles.instructions}>Name: {name}</Text>
         <Text style={styles.instructions}>Version: {version}</Text>
+        <TouchableOpacity onPress={this.onChangeName}><Text>Change Name</Text></TouchableOpacity>
+        <TouchableOpacity onPress={this.onChangeVersion}><Text>Change Version</Text></TouchableOpacity>
       </View>
     );
   }
@@ -102,12 +114,24 @@ interface StateProps {
   name: string;
 }
 
+interface ActionProps {
+  setName: (name: string) => void;
+  setVersion: (version: string) => void;
+}
+
 const mapStateToProps = (state: ReduxState): StateProps => ({
   version: state.appData.version,
   name: state.userData.name
 });
 
+const mapDispatchToProps = (dispatch: Dispatch<ActionTypes>): ActionProps => {
+  return {
+    setName: (name: string) => dispatch(setName(name)),
+    setVersion: (version: string) => dispatch(setVersion(version))
+  };
+};
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Main);

@@ -1,6 +1,6 @@
 export const SET_VERSION = 'SET_VERSION';
 
-interface SetVersionAction {
+export interface SetVersionAction {
     type: typeof SET_VERSION;
     version: string
 }

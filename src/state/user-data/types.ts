@@ -1,6 +1,6 @@
 export const SET_NAME = 'SET_NAME';
 
-interface SetNameAction {
+export interface SetNameAction {
   type: typeof SET_NAME;
   name: string;
 }
