@@ -1,17 +1,12 @@
-/**
- * 
- * @format
- */
-
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export interface Props {
-  text: String
+  text: string;
 }
 
 export interface State {
-  text: String
+  text: string;
 }
 
 export default class UnderlinedText extends React.Component<Props, State> {
@@ -23,11 +18,15 @@ export default class UnderlinedText extends React.Component<Props, State> {
     };
   }
 
-  changeText = (text: String) => {
+  componentDidMount() {
+    // this.state.text = 'Invaild change'; // <-- Compile-time error
+  }
+
+  changeText = (text: string) => {
     this.setState({
       text
     });
-  }
+  };
 
   render() {
     const { text } = this.state;
@@ -49,5 +48,5 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
     textDecorationLine: 'underline'
-  },
+  }
 });

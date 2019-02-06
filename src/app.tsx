@@ -1,15 +1,6 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * 
- * Generated with the TypeScript template
- * https://github.com/emin93/react-native-template-typescript
- * 
- * @format
- */
-
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
+
 import StyledText from './components/styled-text';
 import UnderlinedText from './components/underlined-text';
 
@@ -17,14 +8,18 @@ const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
     'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
+    'Shake or press menu button for dev menu'
 });
 
 export interface Props { }
 
 interface State {
-  list: Array<string>,
-  object: Object
+  list: string[];
+  object: {
+    zero: string;
+    one: string;
+    two: string;
+  };
 }
 
 export default class App extends Component<Props, State> {
@@ -35,10 +30,10 @@ export default class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    const initialList = [ 'zero' ];
+    const initialList = ['zero'];
     const initialObject = {
       zero: '0'
-    }
+    };
 
     this.state = {
       list: [...initialList, 'one', 'two', 'three'],
@@ -84,16 +79,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5FCFF'
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
+    margin: 10
   },
   instructions: {
     textAlign: 'center',
     color: '#333333',
-    marginBottom: 5,
-  },
+    marginBottom: 5
+  }
 });
