@@ -7,6 +7,7 @@ import UnderlinedText from '../../components/underlined-text';
 import { ReduxState, ActionTypes } from '../../state/types';
 import { setName } from '../../state/user-data/actions';
 import { setVersion } from '../../state/app-data/actions';
+import { persistor } from '../../state/configureStore';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -56,11 +57,19 @@ export class Main extends Component<Props, State> {
   }
 
   onChangeName = () => {
-    this.props.setName('New Name');
+    this.props.setName(new Date().toISOString());
   }
 
   onChangeVersion = () => {
     this.props.setVersion('1.0.1');
+  }
+
+  saveState = () => {
+    persistor.flush();
+  }
+
+  resetState = () => {
+    persistor.purge();
   }
 
   render() {
@@ -85,6 +94,9 @@ export class Main extends Component<Props, State> {
         <Text style={styles.instructions}>Version: {version}</Text>
         <TouchableOpacity onPress={this.onChangeName}><Text>Change Name</Text></TouchableOpacity>
         <TouchableOpacity onPress={this.onChangeVersion}><Text>Change Version</Text></TouchableOpacity>
+        <Text style={styles.instructions}>------</Text>
+        <TouchableOpacity onPress={this.saveState}><Text>Save State</Text></TouchableOpacity>
+        <TouchableOpacity onPress={this.resetState}><Text>Reset State</Text></TouchableOpacity>
       </View>
     );
   }
