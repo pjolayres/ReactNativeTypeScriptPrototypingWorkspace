@@ -20,7 +20,7 @@ const encryptor = createEncryptor({
 });
 
 const persistConfig = {
-  key: 'root',
+  key: `app-state-v1`,
   storage,
   transforms: [encryptor]
 };
