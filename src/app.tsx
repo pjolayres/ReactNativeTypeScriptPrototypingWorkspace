@@ -4,12 +4,13 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import { store, persistor } from './state/configureStore';
 import Main from './screens/main';
+import { AppContainer } from './navigation';
 
 const App: React.FunctionComponent = () => {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <Main />
+        <AppContainer />
       </PersistGate>
     </Provider>
   );
