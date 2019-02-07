@@ -8,6 +8,7 @@ import { ReduxState, ActionTypes } from '../../state/types';
 import { setName } from '../../state/user-data/actions';
 import { setVersion } from '../../state/app-data/actions';
 import { persistor } from '../../state/configureStore';
+import { NavigationService } from '../../navigation';
 
 interface Props extends ReduxStateProps, ActionProps {
   test: string;
@@ -16,6 +17,8 @@ interface Props extends ReduxStateProps, ActionProps {
 const InnerPage: React.FunctionComponent<Props> = props => (
   <View style={styles.container}>
     <Text style={styles.heading}>Inner Page</Text>
+    <Text style={styles.text}>--------</Text>
+    <TouchableOpacity onPress={() => NavigationService.goBack()}><Text>Go Back</Text></TouchableOpacity>
     <Text style={styles.text}>--------</Text>
     <Text style={styles.text}>Name: {props.name}</Text>
     <Text style={styles.text}>Version: {props.version}</Text>
