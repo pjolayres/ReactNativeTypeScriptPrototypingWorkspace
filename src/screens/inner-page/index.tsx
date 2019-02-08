@@ -1,7 +1,7 @@
 import React, { Component, Dispatch } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { NavigationScreenProps } from 'react-navigation';
+import { NavigationScreenProps, NavigationScreenComponent, NavigationParams, NavigationScreenConfig } from 'react-navigation';
 
 import StyledText from '../../components/styled-text';
 import UnderlinedText from '../../components/underlined-text';
@@ -10,12 +10,13 @@ import { setName } from '../../state/user-data/actions';
 import { setVersion } from '../../state/app-data/actions';
 import { persistor } from '../../state/configureStore';
 import { NavigationService } from '../../navigation';
+import { FunctionComponentScreen } from '../../../types';
 
 interface Props extends NavigationScreenProps<Props>, ReduxStateProps, ActionProps {
   title: string;
 }
 
-const InnerPage: React.FunctionComponent<Props> = props => {
+const InnerPage: FunctionComponentScreen<Props> = props => {
   const title = props.navigation.getParam('title', 'Inner Page');
 
   return (
@@ -30,6 +31,12 @@ const InnerPage: React.FunctionComponent<Props> = props => {
       <Text style={styles.text}>Version: {props.version}</Text>
     </View>
   );
+};
+
+InnerPage.navigationOptions = ({ navigation }) => {
+  return {
+    title: navigation.getParam('title', 'Inner Page')
+  };
 };
 
 const styles = StyleSheet.create({
