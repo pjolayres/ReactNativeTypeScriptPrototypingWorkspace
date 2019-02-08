@@ -2,6 +2,7 @@ import React, { Component, Dispatch } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { NavigationScreenProps, NavigationScreenProp, NavigationRoute } from 'react-navigation';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome'
 
 import StyledText from '../../components/styled-text';
 import UnderlinedText from '../../components/underlined-text';
@@ -73,6 +74,7 @@ export class Home extends Component<Props, State> {
 
     return (
       <View style={styles.container}>
+        <FontAwesomeIcon name="rocket" size={30} color="#900" />
         <Text style={styles.welcome}>Welcome to React Native!</Text>
         <Text style={styles.instructions}>To get started, edit Home.tsx</Text>
         <Text style={styles.instructions}>{instructions}</Text>
