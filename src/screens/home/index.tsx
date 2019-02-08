@@ -2,21 +2,21 @@ import React, { Component, Dispatch } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { NavigationScreenProps, NavigationScreenProp, NavigationRoute } from 'react-navigation';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome'
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 import StyledText from '../../components/styled-text';
 import UnderlinedText from '../../components/underlined-text';
 import { ReduxState, ActionTypes } from '../../state/types';
 import { setName } from '../../state/user-data/actions';
 import { setVersion } from '../../state/app-data/actions';
+import { NavigationService } from '../../navigation';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android: 'Double tap R on your keyboard to reload,\n' + 'Shake or press menu button for dev menu'
 });
 
-interface Props extends NavigationScreenProps<Props>, ReduxStateProps, ActionProps {
-}
+interface Props extends NavigationScreenProps<Props>, ReduxStateProps, ActionProps {}
 
 interface State {
   list: string[];
@@ -28,6 +28,10 @@ interface State {
 }
 
 export class Home extends Component<Props, State> {
+  static navigationOptions = {
+    title: 'Home Screen'
+  };
+
   static staticProp = 'Static Prop';
 
   private underlinedText = React.createRef<UnderlinedText>();
@@ -60,11 +64,11 @@ export class Home extends Component<Props, State> {
 
   onChangeName = () => {
     this.props.setName(new Date().toISOString());
-  }
+  };
 
   onChangeVersion = () => {
     this.props.setVersion('1.0.1');
-  }
+  };
 
   render() {
     const { version, name } = this.props;
@@ -85,9 +89,19 @@ export class Home extends Component<Props, State> {
         <StyledText text="Styled text" />
         <UnderlinedText ref={this.underlinedText} text="Underlined text (Changing in 1s)" />
         <Text style={styles.instructions}>------</Text>
-        <TouchableOpacity onPress={this.onChangeName}><Text>Change Name</Text></TouchableOpacity>
-        <TouchableOpacity onPress={this.onChangeVersion}><Text>Change Version</Text></TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('InnerPage')}><Text>Go to Inner Page</Text></TouchableOpacity>
+        <TouchableOpacity onPress={this.onChangeName}>
+          <Text>Change Name</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.onChangeVersion}>
+          <Text>Change Version</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('InnerPage')}>
+          <Text>Go to Inner Page</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => NavigationService.toggleDrawer()}>
+          <Text>Toggle Drawer</Text>
+        </TouchableOpacity>
+        <Text style={styles.instructions}>------</Text>
         <Text style={styles.instructions}>------</Text>
         <Text style={styles.instructions}>Name: {name}</Text>
         <Text style={styles.instructions}>Version: {version}</Text>
