@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { createBottomTabNavigator, createAppContainer, NavigationActions, NavigationContainerComponent, createDrawerNavigator, DrawerActions } from 'react-navigation';
+import {
+  createBottomTabNavigator,
+  createAppContainer,
+  NavigationActions,
+  NavigationContainerComponent,
+  createDrawerNavigator,
+  DrawerActions,
+  createSwitchNavigator,
+  createStackNavigator
+} from 'react-navigation';
 import { SafeAreaView, Platform, View } from 'react-native';
 
 import Home from './screens/home';
 import InnerPage from './screens/inner-page';
+import Login from './screens/login';
 
 class NavigationServiceImpl {
   private navigation: NavigationContainerComponent | null = null;
@@ -67,11 +77,24 @@ export const NavigationService = new NavigationServiceImpl();
 
 const TabNavigator = createBottomTabNavigator(
   {
-    Home,
+    Home: {
+      screen: Home,
+      params: {
+        title: 'Home',
+        icon: {
+          component: FontAwesome,
+          name: 'home'
+        }
+      }
+    },
     InnerPage: {
       screen: InnerPage,
       params: {
-        title: 'Settings'
+        title: 'Settings',
+        icon: {
+          component: FontAwesome,
+          name: 'cog'
+        }
       }
     }
   },
@@ -79,16 +102,12 @@ const TabNavigator = createBottomTabNavigator(
     initialRouteName: 'Home',
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, horizontal, tintColor }) => {
-        const { routeName } = navigation.state;
-        let iconName: string = '';
-        if (routeName === 'Home') {
-          iconName = 'home';
-        } else if (routeName === 'InnerPage') {
-          iconName = 'pagelines';
-        }
+        const icon = (navigation.state && navigation.state.params && navigation.state.params.icon) || {
+          component: FontAwesome,
+          name: 'square-o'
+        };
 
-        // You can return any component that you like here!
-        return <FontAwesome name={iconName} size={25} color={(tintColor as string) || '#000'} />;
+        return <icon.component name={icon.name} size={25} color={(tintColor as string) || '#000'} />;
       }
     }),
     tabBarOptions: {
@@ -105,21 +124,59 @@ const TabNavigator = createBottomTabNavigator(
   }
 );
 
-const DrawerNavigator = createDrawerNavigator(
+const AppStack = createDrawerNavigator(
   {
-    DrawerHome: {
-      screen: TabNavigator
+    Home: {
+      screen: TabNavigator,
+      params: {
+        title: 'Home',
+        icon: {
+          component: FontAwesome,
+          name: 'home'
+        }
+      }
     },
-    DrawerScreen1: {
+    Settings: {
       screen: InnerPage,
       params: {
-        title: 'Drawer Screen 1'
+        title: 'Settings',
+        icon: {
+          component: FontAwesome,
+          name: 'cog'
+        }
       }
     }
+  },
+  {
+    initialRouteName: 'Home',
+    defaultNavigationOptions: ({ navigation }) => ({
+      drawerIcon: ({ focused, tintColor }) => {
+        const icon = (navigation.state && navigation.state.params && navigation.state.params.icon) || {
+          component: FontAwesome,
+          name: 'square-o'
+        };
+
+        return <icon.component name={icon.name} size={25} color={(tintColor as string) || '#000'} />;
+      }
+    })
   }
 );
 
-const InnerAppContainer = createAppContainer(DrawerNavigator);
+const AuthStack = createStackNavigator({
+  Auth: Login
+});
+
+const MainNavigator = createSwitchNavigator(
+  {
+    Auth: AuthStack,
+    App: AppStack
+  },
+  {
+    initialRouteName: 'Auth'
+  }
+);
+
+const InnerAppContainer = createAppContainer(MainNavigator);
 
 export const AppContainer = () => (
   <>

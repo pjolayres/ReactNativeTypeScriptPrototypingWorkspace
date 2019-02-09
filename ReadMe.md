@@ -7,6 +7,7 @@ A react native workspace project based on `react-native init --template typescri
 ### Navigation Menu
 - Bottom tabs (`createBottomTabNavigator()`) is used for top-level navigation with 4 screens or less.
 - Left/right drawers (`createDrawerNavigator()`) is used for top-level navigation with 5 or more screens.
+- DO NOT use bottom tabs and drawers at the same time.
 - For top tabs with swiping and animations enabled, use `react-native-tab-view`.
 - Usability guidelines do not recommend having swipe gestures or sliding animations for bottom tabs. DO NOT attempt to overwrite `react-navigation` limited behaviors.
 
@@ -17,3 +18,15 @@ A react native workspace project based on `react-native init --template typescri
 
 ## Issues
 1. The generated template from `react-native init --template typescript` does not have a functioning jest configuration for TypeScript. Resolved by adding `jest.config.js` and removing jest configuraiton from `package.json`.
+1. Prettier cannot be configured to support the following code format (related [issue](https://github.com/prettier/prettier/issues/840)):
+```javascript
+if (...) {
+    ...
+}
+else if (...) {
+    ...
+}
+else {
+    ...
+}
+```

@@ -7,9 +7,12 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import StyledText from '../../components/styled-text';
 import UnderlinedText from '../../components/underlined-text';
 import { ReduxState, ActionTypes } from '../../state/types';
-import { setName } from '../../state/user-data/actions';
+import { setName, logout } from '../../state/user-data/actions';
 import { setVersion } from '../../state/app-data/actions';
 import { NavigationService } from '../../navigation';
+import { persistor } from '../../state/configureStore';
+import { ThunkDispatch } from 'redux-thunk';
+import { Action } from 'redux';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -29,7 +32,7 @@ interface State {
 
 export class Home extends Component<Props, State> {
   static navigationOptions = {
-    title: 'Home Screen'
+    title: 'Home'
   };
 
   static staticProp = 'Static Prop';
@@ -70,6 +73,16 @@ export class Home extends Component<Props, State> {
     this.props.setVersion('1.0.1');
   };
 
+  onResetState = () => {
+    persistor.purge();
+  }
+
+  onLogout = () => {
+    this.props.logout();
+
+    this.props.navigation.navigate('Auth');
+  }
+
   render() {
     const { version, name } = this.props;
     const { list, object } = this.state;
@@ -100,6 +113,12 @@ export class Home extends Component<Props, State> {
         </TouchableOpacity>
         <TouchableOpacity onPress={() => NavigationService.toggleDrawer()}>
           <Text>Toggle Drawer</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.onLogout}>
+          <Text>Logout</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.onResetState}>
+          <Text>Reset State</Text>
         </TouchableOpacity>
         <Text style={styles.instructions}>------</Text>
         <Text style={styles.instructions}>------</Text>
@@ -137,6 +156,7 @@ interface ReduxStateProps {
 interface ActionProps {
   setName: (name: string) => void;
   setVersion: (version: string) => void;
+  logout: () => void;
 }
 
 const mapStateToProps = (state: ReduxState): ReduxStateProps => ({
@@ -144,10 +164,11 @@ const mapStateToProps = (state: ReduxState): ReduxStateProps => ({
   name: state.userData.name
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<ActionTypes>): ActionProps => {
+const mapDispatchToProps = (dispatch: ThunkDispatch<ReduxState, {}, Action>): ActionProps => {
   return {
     setName: (name: string) => dispatch(setName(name)),
-    setVersion: (version: string) => dispatch(setVersion(version))
+    setVersion: (version: string) => dispatch(setVersion(version)),
+    logout: () => dispatch(logout())
   };
 };
 

@@ -30,7 +30,8 @@
     ],
     "member-access": [true, "no-public"],
     "eofline": true,
-    "jsx-no-lambda": [false]
+    "jsx-no-lambda": [false],
+    "jsx-no-multiline-js": false
   },
   "rulesDirectory": []
 }
