@@ -3,6 +3,8 @@ import { Platform, StyleSheet, Text, View, TouchableOpacity } from 'react-native
 import { connect } from 'react-redux';
 import { NavigationScreenProps, NavigationScreenProp, NavigationRoute } from 'react-navigation';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import { ThunkDispatch } from 'redux-thunk';
+import { Action } from 'redux';
 
 import StyledText from '../../components/styled-text';
 import UnderlinedText from '../../components/underlined-text';
@@ -11,8 +13,6 @@ import { setName, logout } from '../../state/user-data/actions';
 import { setVersion } from '../../state/app-data/actions';
 import { NavigationService } from '../../navigation';
 import { persistor } from '../../state/configureStore';
-import { ThunkDispatch } from 'redux-thunk';
-import { Action } from 'redux';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',

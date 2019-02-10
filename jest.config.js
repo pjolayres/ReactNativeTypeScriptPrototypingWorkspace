@@ -5,6 +5,6 @@ module.exports = {
     },
     cacheDirectory: ".jest/cache",
     transformIgnorePatterns: [
-        "node_modules/(?!(react-native|react-navigation|react-navigation-tabs|react-native-popup-menu|redux-persist|react-native-device-info)/)"
+        "node_modules/(?!(react-native|react-navigation|react-navigation-tabs|react-native-popup-menu|redux-persist|react-native-device-info|react-navigation|react-native-vector-icons|react-native-screens)/)"
     ]
 };

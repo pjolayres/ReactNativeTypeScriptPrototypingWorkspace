@@ -30,3 +30,6 @@ else {
     ...
 }
 ```
+
+## TODOs
+1. Fix component tests with navigation and redux dependencies.

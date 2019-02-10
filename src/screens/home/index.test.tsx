@@ -16,5 +16,5 @@ it('renders correctly', () => {
   const setName = jest.fn<(name: string) => void>();
   const setVersion = jest.fn<(version: string) => void>();
 
-  renderer.create(<Home name="test" version="1.0.0" navigation={navigation} setName={setName} setVersion={setVersion} />);
+  renderer.create(<Home name="test" version="1.0.0" navigation={navigation} setName={setName} setVersion={setVersion} logout={() => { return; }} />);
 });

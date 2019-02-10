@@ -8,7 +8,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "test": "jest",
-    "lint": "tslint -c tslint.json -e 'node_modules/' '**/*.tsx'",
+    "lint": "tslint -c tslint.json -e 'node_modules/' '**/*.tsx' --fix",
     "tsc": "tsc"
   },
   "dependencies": {
