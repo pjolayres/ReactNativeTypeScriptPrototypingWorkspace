@@ -32,3 +32,10 @@ else {
 ```
 
 ## TODOs
+1. Use lottie/bodymovin animations.
+1. Use axios for web requests.
+1. Add google maps and customize theme and user experience
+1. Add facebook integration
+1. Add sharing capability
+1. Add camera capabilities
+1. Add sensor (GPS, gyro, compass, etc.) capabilities
