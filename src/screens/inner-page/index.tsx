@@ -10,13 +10,9 @@ import { setName } from '../../state/user-data/actions';
 import { setVersion } from '../../state/app-data/actions';
 import { persistor } from '../../state/configureStore';
 import Navigation from '../../navigation';
-import { FunctionComponentScreen } from '../../../types';
+import { FunctionComponentScreen, ScreenParams } from '../../../types';
 
-interface NavigationProps {
-  title: string;
-}
-
-interface Props extends NavigationScreenProps<NavigationProps>, ReduxStateProps, ActionProps {
+interface Props extends NavigationScreenProps<ScreenParams>, ReduxStateProps, ActionProps {
 }
 
 export const InnerPage: FunctionComponentScreen<Props> = props => {

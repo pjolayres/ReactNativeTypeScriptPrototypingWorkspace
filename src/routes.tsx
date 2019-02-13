@@ -36,7 +36,7 @@ const TabNavigator = createBottomTabNavigator(
           component: FontAwesome,
           name: 'cog'
         }
-      }
+      } as ScreenParams
     }
   },
   {
@@ -75,7 +75,7 @@ const AppStack = createDrawerNavigator(
           component: FontAwesome,
           name: 'home'
         }
-      }
+      } as ScreenParams
     },
     Settings: {
       screen: InnerPage,
@@ -85,7 +85,7 @@ const AppStack = createDrawerNavigator(
           component: FontAwesome,
           name: 'cog'
         }
-      }
+      } as ScreenParams
     }
   },
   {
