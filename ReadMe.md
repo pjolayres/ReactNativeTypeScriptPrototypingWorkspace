@@ -31,11 +31,20 @@ else {
 }
 ```
 
+## Features
+- [x] TypeScript setup
+- [x] TSlint configuration
+- [x] Prettier configuration
+- [x] Jest unit and snapshot testing
+- [x] Redux implementation
+- [x] Encrypted state persistence
+- [x] React navigation
+- [ ] lottie/bodymovin animations.
+- [ ] Axios for web requests.
+- [ ] Customized Google maps integration
+- [ ] Facebook integration
+- [ ] Sharing capability
+- [ ] Camera capabilities
+- [ ] Sensor (GPS, gyro, compass, etc.) capabilities
+
 ## TODOs
-1. Use lottie/bodymovin animations.
-1. Use axios for web requests.
-1. Add google maps and customize theme and user experience
-1. Add facebook integration
-1. Add sharing capability
-1. Add camera capabilities
-1. Add sensor (GPS, gyro, compass, etc.) capabilities
