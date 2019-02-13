@@ -39,6 +39,8 @@ else {
 - [x] Redux implementation
 - [x] Encrypted state persistence
 - [x] React navigation
+- [x] Simulated authentication flow
+- [ ] Infinite list with api-based pagination
 - [ ] lottie/bodymovin animations.
 - [ ] Axios for web requests.
 - [ ] Customized Google maps integration
@@ -46,5 +48,12 @@ else {
 - [ ] Sharing capability
 - [ ] Camera capabilities
 - [ ] Sensor (GPS, gyro, compass, etc.) capabilities
+- [ ] Biometric authentication (fingerprint, face id, etc.)
+- [ ] Push notification
+- [ ] Continuous integration
+- [ ] Firebase backend
+- [ ] AWS serverless backend
+- [ ] Auth0 authentication
+- [ ] WebSocket/real-time communication
 
 ## TODOs
