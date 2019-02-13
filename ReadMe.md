@@ -55,5 +55,6 @@ else {
 - [ ] AWS serverless backend
 - [ ] Auth0 authentication
 - [ ] WebSocket/real-time communication
+- [ ] Analytics
 
 ## TODOs

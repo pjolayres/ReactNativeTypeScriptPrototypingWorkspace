@@ -8,9 +8,15 @@ import DeviceInfo from 'react-native-device-info';
 
 import reducers from './reducers';
 
+declare var process: {
+  env: {
+    NODE_ENV: string;
+  };
+};
+
 const middleware: any[] = [thunk];
 
-if (__DEV__) {
+if (__DEV__ && process.env.NODE_ENV !== 'test') {
   const logger = createLogger();
   middleware.push(logger);
 }

@@ -1,5 +1,5 @@
 import { ActionCreator, Action } from 'redux';
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { ThunkAction } from 'redux-thunk';
 
 import { ReduxState } from '../types';
 
@@ -21,22 +21,21 @@ const loginAsync: (username: string, password: string) => Promise<boolean> = (us
       reject('Invalid username and password');
     }, 1000);
   });
-}
+};
 
 export const login: ActionCreator<ThunkAction<Promise<boolean>, ReduxState, {}, Action>> = (username: string, password: string) => {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
       const result = await loginAsync(username, password);
 
       dispatch({ type: LOGIN });
 
       return result;
-    }
-    catch (ex) {
+    } catch (ex) {
       throw ex;
     }
-  }
-}
+  };
+};
 
 export const logout: ActionCreator<ThunkAction<void, ReduxState, {}, Action>> = () => {
   return (dispatch, getState) => {
@@ -46,5 +45,5 @@ export const logout: ActionCreator<ThunkAction<void, ReduxState, {}, Action>> = 
     if (isLoggedIn) {
       dispatch({ type: LOGOUT });
     }
-  }
+  };
 };

@@ -9,7 +9,9 @@
     "ios": "react-native run-ios",
     "test": "jest --detectOpenHandles",
     "lint": "tslint -c tslint.json -e 'node_modules/' '**/*.tsx' --fix",
-    "tsc": "tsc"
+    "prettier": "prettier --write '**/*.ts'",
+    "tsc": "tsc",
+    "check": "npm run prettier && npm run lint && npm run tsc && npm test"
   },
   "dependencies": {
     "@types/redux-logger": "^3.0.6",
