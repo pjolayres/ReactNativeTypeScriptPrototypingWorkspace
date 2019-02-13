@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#F5FCFF",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 20,
+        "margin": 10,
+        "textAlign": "center",
+      }
+    }
+  >
+    title
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "#333333",
+        "marginBottom": 5,
+        "textAlign": "center",
+      }
+    }
+  >
+    --------
+  </Text>
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <Text>
+      Go Back
+    </Text>
+  </View>
+  <Text
+    style={
+      Object {
+        "color": "#333333",
+        "marginBottom": 5,
+        "textAlign": "center",
+      }
+    }
+  >
+    --------
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "#333333",
+        "marginBottom": 5,
+        "textAlign": "center",
+      }
+    }
+  >
+    Name: 
+    Test Name
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "#333333",
+        "marginBottom": 5,
+        "textAlign": "center",
+      }
+    }
+  >
+    Version: 
+    Test Version
+  </Text>
+</View>
+`;

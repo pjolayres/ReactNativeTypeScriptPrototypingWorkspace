@@ -1,40 +1,37 @@
 {
-    "defaultSeverity": "error",
-    "extends": [
-        "tslint:recommended",
-        "tslint-config-prettier",
-        "tslint-eslint-rules",
-        "tslint-react"
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended", "tslint-config-prettier", "tslint-eslint-rules", "tslint-react"],
+  "jsRules": {},
+  "rules": {
+    "quotemark": [true, "single", "jsx-double"],
+    "ordered-imports": [
+      true,
+      {
+        "grouped-imports": true,
+        "import-sources-order": "any",
+        "named-imports-order": "any"
+      }
     ],
-    "jsRules": {},
-    "rules": {
-        "quotemark": [true, "single", "jsx-double"],
-        "ordered-imports": [
-            true,
-            {
-                "grouped-imports": true,
-                "import-sources-order": "any",
-                "named-imports-order": "any"
-            }
-        ],
-        "no-trailing-whitespace": [true, "ignore-template-strings", "ignore-jsdoc"],
-        "object-literal-sort-keys": [false],
-        "interface-name": [true, "never-prefix"],
-        "no-empty-interface": false,
-        "trailing-comma": [
-            true,
-            {
-                "multiline": {
-                    "objects": "never",
-                    "arrays": "never",
-                    "functions": "never",
-                    "typeLiterals": "ignore"
-                },
-                "esSpecCompliant": true
-            }
-        ],
-        "member-access": [true, "no-public"],
-        "eofline": true
-    },
-    "rulesDirectory": []
+    "no-trailing-whitespace": [true, "ignore-template-strings", "ignore-jsdoc"],
+    "object-literal-sort-keys": [false],
+    "interface-name": [true, "never-prefix"],
+    "no-empty-interface": false,
+    "trailing-comma": [
+      true,
+      {
+        "multiline": {
+          "objects": "never",
+          "arrays": "never",
+          "functions": "never",
+          "typeLiterals": "ignore"
+        },
+        "esSpecCompliant": true
+      }
+    ],
+    "member-access": [true, "no-public"],
+    "eofline": true,
+    "jsx-no-lambda": [false],
+    "jsx-no-multiline-js": false
+  },
+  "rulesDirectory": []
 }

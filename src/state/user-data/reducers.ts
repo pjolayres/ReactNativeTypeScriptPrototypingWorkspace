@@ -1,7 +1,8 @@
-import { SET_NAME, UserDataActionTypes, UserDataState } from './types';
+import { SET_NAME, UserDataActionTypes, UserDataState, LOGIN, LOGOUT } from './types';
 
 const initialState: UserDataState = {
-  name: 'temp'
+  name: 'temp',
+  isLoggedIn: false
 };
 
 export default function reducer(state = initialState, action: UserDataActionTypes): UserDataState {
@@ -10,6 +11,16 @@ export default function reducer(state = initialState, action: UserDataActionType
       return {
         ...state,
         name: action.name
+      };
+    case LOGIN:
+      return {
+        ...state,
+        isLoggedIn: true
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        isLoggedIn: false
       };
     default:
       return state;
