@@ -9,21 +9,24 @@ import { ReduxState, ActionTypes } from '../../state/types';
 import { setName } from '../../state/user-data/actions';
 import { setVersion } from '../../state/app-data/actions';
 import { persistor } from '../../state/configureStore';
-import { NavigationService } from '../../navigation';
+import Navigation from '../../navigation';
 import { FunctionComponentScreen } from '../../../types';
 
-interface Props extends NavigationScreenProps<Props>, ReduxStateProps, ActionProps {
+interface NavigationProps {
   title: string;
 }
 
-const InnerPage: FunctionComponentScreen<Props> = props => {
+interface Props extends NavigationScreenProps<NavigationProps>, ReduxStateProps, ActionProps {
+}
+
+export const InnerPage: FunctionComponentScreen<Props> = props => {
   const title = props.navigation.getParam('title', 'Inner Page');
 
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>{title}</Text>
       <Text style={styles.text}>--------</Text>
-      <TouchableOpacity onPress={() => NavigationService.goBack()}>
+      <TouchableOpacity onPress={() => Navigation.goBack()}>
         <Text>Go Back</Text>
       </TouchableOpacity>
       <Text style={styles.text}>--------</Text>

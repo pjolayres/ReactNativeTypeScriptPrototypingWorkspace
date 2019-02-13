@@ -1,17 +1,17 @@
 import React, { Component, Dispatch } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { NavigationScreenProps, NavigationScreenProp, NavigationRoute } from 'react-navigation';
+import { NavigationScreenProps } from 'react-navigation';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
 
 import StyledText from '../../components/styled-text';
 import UnderlinedText from '../../components/underlined-text';
-import { ReduxState, ActionTypes } from '../../state/types';
+import { ReduxState } from '../../state/types';
 import { setName, logout } from '../../state/user-data/actions';
 import { setVersion } from '../../state/app-data/actions';
-import { NavigationService } from '../../navigation';
+import Navigation from '../../navigation';
 import { persistor } from '../../state/configureStore';
 
 const instructions = Platform.select({
@@ -19,7 +19,7 @@ const instructions = Platform.select({
   android: 'Double tap R on your keyboard to reload,\n' + 'Shake or press menu button for dev menu'
 });
 
-interface Props extends NavigationScreenProps<Props>, ReduxStateProps, ActionProps {}
+interface Props extends NavigationScreenProps<{}>, ReduxStateProps, ActionProps {}
 
 interface State {
   list: string[];
@@ -111,7 +111,7 @@ export class Home extends Component<Props, State> {
         <TouchableOpacity onPress={() => this.props.navigation.navigate('InnerPage')}>
           <Text>Go to Inner Page</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => NavigationService.toggleDrawer()}>
+        <TouchableOpacity onPress={() => Navigation.toggleDrawer()}>
           <Text>Toggle Drawer</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={this.onLogout}>

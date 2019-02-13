@@ -7,7 +7,7 @@
     "start:reset": "node node_modules/react-native/local-cli/cli.js start --reset-cache",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "lint": "tslint -c tslint.json -e 'node_modules/' '**/*.tsx' --fix",
     "tsc": "tsc"
   },

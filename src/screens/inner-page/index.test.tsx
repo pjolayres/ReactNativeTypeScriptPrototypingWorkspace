@@ -2,7 +2,7 @@ import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import { Home } from '.';
+import { InnerPage } from '.';
 
 // jest.mock('react-native-vector-icons/FontAwesome', () => 'Icon');
 
@@ -11,23 +11,14 @@ beforeAll(async () => {
 });
 
 it('renders correctly', () => {
+  const title = 'title';
   const navigation: any = {
-    navigate: jest.fn()
+    getParam: jest.fn(() => title)
   };
   const setName = jest.fn<(name: string) => void>();
   const setVersion = jest.fn<(version: string) => void>();
-  const logout = jest.fn<() => void>();
 
-  const tree = renderer.create(
-    <Home
-      name="test"
-      version="1.0.0"
-      navigation={navigation}
-      setName={setName}
-      setVersion={setVersion}
-      logout={logout}
-    />
-  ).toJSON();
+  const tree = renderer.create(<InnerPage setName={setName} setVersion={setVersion} navigation={navigation} name="Test Name" version="Test Version" />).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

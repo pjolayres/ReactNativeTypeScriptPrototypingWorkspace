@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { store, persistor } from './state/configureStore';
-import { AppContainer } from './navigation';
+import AppContainer from './routes';
 
 const App: React.FunctionComponent = () => {
   return (
