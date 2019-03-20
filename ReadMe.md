@@ -2,6 +2,22 @@
 
 A react native workspace project based on `react-native init --template typescript` for experimentations.
 
+## Quick Start
+
+```shell
+npm install
+react-native link
+npm run ios
+```
+
+or
+
+```shell
+npm install
+react-native link
+npm run android
+```
+
 ## Guidelines
 
 ### Navigation Menu
