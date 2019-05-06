@@ -56,6 +56,11 @@ else {
 - [x] Encrypted state persistence
 - [x] React navigation
 - [x] Simulated authentication flow
+- [x] Continuous integration with CircleCI for linting and unit testing
+- [x] Continuous integration with TravisCI for linting and unit testing
+- [x] Continuous integration with Azure Pipelines for linting and unit testing
+- [x] Continuous integration with VS App Center for Android application builds
+- [ ] Continuous integration with VS App Center for iOS application builds
 - [ ] Infinite list with api-based pagination
 - [ ] lottie/bodymovin animations.
 - [ ] Axios for web requests.
